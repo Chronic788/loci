@@ -6,16 +6,26 @@
 # ------------------------------------------------------------------------------
 
 import datetime
+import os
 
-basePath = "/home/jared/Desktop/Sync/Loci"
-workLogPath = basePath + "/work_logs"
-journalPath = basePath + "/journal"
+basePath = "/home/jared/Desktop/Sync/Logs"
+workLogPath = basePath + "/work_logs/"
+journalPath = basePath + "/journal/"
 
 newLine = "\n"
 twoNewLines = "\n\n"
 smallDivider = "----------------"
 mediumDivider = "------------------------------"
 largeDivider = "---------------------------------------------"
+
+def writeFile(basePath, fileName, contents):
+
+    if not os.path.exists(basePath):
+        os.makedirs(basePath)
+
+    entryFile = open(workLogPath + fileName + ".txt", "x")
+    entryFile.write(contents)
+    entryFile.close()
 
 def logWorkEntry():
 
@@ -35,7 +45,8 @@ def logWorkEntry():
 
     # Record the date and time
     outString = outString + smallDivider + newLine
-    outString = outString + date.strftime("%a %b %d, %Y - %I:%M %p")
+    dateAndTime = date.strftime("%a %b %d, %Y - %I:%M %p")
+    outString = outString + dateAndTime
     outString = outString + newLine + mediumDivider + newLine
 
     # Accomplishments
@@ -58,7 +69,10 @@ def logWorkEntry():
     outString = outString + newLine + "Productivity Score" + newLine + smallDivider + twoNewLines
     outString = outString + str("   " + productivity) + twoNewLines
 
-    print("Outstring:\n")
-    print(outString)
+    # Write the file
+    writeFile(workLogPath, dateAndTime, outString)
+
+    # Confirm
+    print(newLine + "Work successfully logged!")
 
 logWorkEntry()
