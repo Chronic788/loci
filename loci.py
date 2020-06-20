@@ -14,7 +14,7 @@ windowsBasePath = "C:\\Users\\JNelsen\\OneDrive - KNEX\\Desktop\\logs"
 
 linuxWorkLogPath = "/work_logs/"
 windowsWorkLogPath = "\\work_logs\\"
-journalPath = "/journal/"
+linuxJournalPath = "/journal/"
 windowsJournalLogPath = "\\journal\\"
 
 newLine = "\n"
@@ -40,7 +40,7 @@ def writeFile(logTypePath, fileName, contents):
         os.makedirs(finalPath)
 
     # Write contents of file
-    fileName = fileName.replace(":", ";")
+    fileName = fileName.replace(":", ".")
     filePath = finalPath + fileName + ".txt"
     entryFile = open(filePath, "w")
     entryFile.write(contents)
@@ -54,17 +54,16 @@ def logWorkEntry():
     workLogEntryTitle = date.strftime("%a %b %d, %Y")
 
     # Start the outstring
-    outString = ""
-    outString = outString + "Work Log Entry" + newLine
+    outString = "Work Log Entry" + newLine
 
     # Start the entry
-    print("\n" + mediumDivider)
+    print(newLine + mediumDivider)
     print(workLogEntryTitle + " Work Log Entry")
     print(mediumDivider)
 
     # Record the date and time
     outString = outString + smallDivider + newLine
-    dateAndTime = date.strftime("%a %b %d, %Y - %I:%M %p")
+    dateAndTime = date.strftime("%a %b %d, %Y - %I:%M %p") + " Work Log"
     outString = outString + dateAndTime
     outString = outString + newLine + mediumDivider + newLine
 
@@ -94,5 +93,44 @@ def logWorkEntry():
     # Confirm
     print(newLine + "Work successfully logged!")
 
+def logJournalEntry():
+
+    # Form the title for the journal entry
+    date = datetime.datetime.now()
+    # Weekday - Month - Day of Month - Year
+    journalEntryTitle = date.strftime("%a %b %d, %Y")
+
+    # Start the outstring
+    outString ="Journal Entry" + newLine
+
+    # Start the entry
+    print(newLine + mediumDivider)
+    print(journalEntryTitle + " Journal Entry")
+    print(mediumDivider)
+
+    # Record the date and time
+    outString = outString + smallDivider + newLine
+    dateAndTime = date.strftime("%a %b %d, %Y - %I:%M %p") + " Journal Entry"
+    outString = outString + dateAndTime
+    outString = outString + newLine + mediumDivider + newLine
+
+    # Journal Entry
+    entry = input("\nEnter your journal entry:\n\n")
+    outString = outString + newLine + "Journal Entry" + newLine + smallDivider + twoNewLines
+    outString = outString + str("   " + entry) + twoNewLines
+
+    # Write the file
+    writeFile(linuxJournalPath, dateAndTime, outString)
+
+    # Confirm
+    print(newLine + "Journal Entry successfully logged!")
+
 # Main function call
-logWorkEntry()
+options = "1 = Log your work\n2 = Write a journal entry"
+selection = input("\nWhat would you like to do?\n" + options + "\n")
+
+# Select the option
+if selection == "1":
+    logWorkEntry()
+else:
+    logJournalEntry()
