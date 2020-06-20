@@ -7,10 +7,15 @@
 
 import datetime
 import os
+import platform
 
-basePath = "/home/jared/Desktop/Sync/Logs"
-workLogPath = basePath + "/work_logs/"
-journalPath = basePath + "/journal/"
+linuxBasePath = "/home/jared/Desktop/logs"
+windowsBasePath = "C:\\Users\\JNelsen\\OneDrive - KNEX\\Desktop\\logs"
+
+linuxWorkLogPath = "/work_logs/"
+windowsWorkLogPath = "\\work_logs\\"
+journalPath = "/journal/"
+windowsJournalLogPath = "\\journal\\"
 
 newLine = "\n"
 twoNewLines = "\n\n"
@@ -18,12 +23,26 @@ smallDivider = "----------------"
 mediumDivider = "------------------------------"
 largeDivider = "---------------------------------------------"
 
-def writeFile(basePath, fileName, contents):
+def writeFile(logTypePath, fileName, contents):
 
-    if not os.path.exists(basePath):
-        os.makedirs(basePath)
+    # Make final path
+    finalPath = linuxBasePath + logTypePath
+    if(platform.system() == 'Windows'):
+        finalPath = windowsBasePath
+        # Append log type path based on os
+        if logTypePath == '/work_logs/':
+            finalPath = finalPath + windowsWorkLogPath
+        else:
+            finalPath = finalPath + windowsJournalLogPath
 
-    entryFile = open(workLogPath + fileName + ".txt", "x")
+    # Check if path exists
+    if not os.path.exists(finalPath):
+        os.makedirs(finalPath)
+
+    # Write contents of file
+    fileName = fileName.replace(":", ";")
+    filePath = finalPath + fileName + ".txt"
+    entryFile = open(filePath, "w")
     entryFile.write(contents)
     entryFile.close()
 
@@ -70,9 +89,10 @@ def logWorkEntry():
     outString = outString + str("   " + productivity) + twoNewLines
 
     # Write the file
-    writeFile(workLogPath, dateAndTime, outString)
+    writeFile(linuxWorkLogPath, dateAndTime, outString)
 
     # Confirm
     print(newLine + "Work successfully logged!")
 
+# Main function call
 logWorkEntry()
