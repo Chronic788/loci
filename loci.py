@@ -46,6 +46,21 @@ def writeFile(logTypePath, fileName, contents):
     entryFile.write(contents)
     entryFile.close()
 
+# Makes a 110 character-wide paragraph from the given text
+def makeParagraph(text):
+
+    finalText = ""
+    textWords = text.split(" ")
+    charCount = 0
+    for textWord in textWords:
+        if not len(textWord) + charCount < 110:
+            finalText = finalText + "\n"
+            charCount = 0
+        charCount = charCount + len(textWord)
+        finalText = finalText + textWord + " "
+
+    return finalText
+
 def logWorkEntry():
 
     # Form the title for the work log
@@ -69,16 +84,19 @@ def logWorkEntry():
 
     # Accomplishments
     accomplishments = input("\nWhat were some of your accomplishments today?\n\n")
+    accomplishments = makeParagraph(accomplishments)
     outString = outString + newLine + "Accomplishments" + newLine + smallDivider + twoNewLines
     outString = outString + str("   " + accomplishments) + twoNewLines
 
     # Difficulties
     difficulties = input("\nWhat were some of the difficulties you faced today?\n\n")
+    difficulties = makeParagraph(difficulties)
     outString = outString + newLine + "Difficulties" + newLine + smallDivider + twoNewLines
     outString = outString + str("   " + difficulties) + twoNewLines
 
     # Notes
     notes = input("\nEnter some notes about work today:\n\n")
+    notes = makeParagraph(notes)
     outString = outString + newLine + "Notes" + newLine + smallDivider + twoNewLines
     outString = outString + str("   " + notes) + twoNewLines
 
@@ -116,6 +134,7 @@ def logJournalEntry():
 
     # Journal Entry
     entry = input("\nEnter your journal entry:\n\n")
+    entry = makeParagraph(entry)
     outString = outString + newLine + "Journal Entry" + newLine + smallDivider + twoNewLines
     outString = outString + str("   " + entry) + twoNewLines
 
@@ -132,5 +151,7 @@ selection = input("\nWhat would you like to do?\n" + options + "\n")
 # Select the option
 if selection == "1":
     logWorkEntry()
-else:
+elif selection == "2":
     logJournalEntry()
+else:
+    print("Quitting...")
