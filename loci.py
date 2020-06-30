@@ -105,6 +105,11 @@ def logWorkEntry():
     outString = outString + newLine + "Productivity Score" + newLine + smallDivider + twoNewLines
     outString = outString + str("   " + productivity) + twoNewLines
 
+    # What are you doing tomorrow
+    doingTomorrow = input("\nWhat are you doing tomorrow?\n\n")
+    outString = outString + newLine + "What you are doing tomorrow" + newLine + smallDivider + twoNewLines
+    outString = outString + str("   " + doingTomorrow) + twoNewLines
+
     # Write the file
     writeFile(linuxWorkLogPath, dateAndTime, outString)
 
@@ -147,6 +152,7 @@ def logJournalEntry():
 # Main function call
 options = "1 = Log your work\n2 = Write a journal entry"
 selection = input("\nWhat would you like to do?\n" + options + "\n")
+selection = str(selection)
 
 # Select the option
 if selection == "1":
