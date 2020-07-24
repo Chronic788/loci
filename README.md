@@ -33,4 +33,10 @@ These parameters reside at the top of the file and can be set for both Windows a
 2. Run this command: python loci.py
 ```
 
+## What Happens?
+
+```
+Loci will take the answers to your questions and compile a little report in a text file at the location you specify. The file will be titled with the day and time for easy reference.
+```
+
 Try it out for a few days and see if it helps you keep track of your work!
