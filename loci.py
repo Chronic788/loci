@@ -2,7 +2,8 @@
 # This is Loci
 # ------------------------------------------------------------------------------
 # Loci is meant to boost focus and productivity at work and at home.
-# It does so by providing an easy way to log work progress and also to journal.
+# It asks key questions about your day to help you record what is important and
+# keep your work moving.
 # ------------------------------------------------------------------------------
 
 import datetime
@@ -14,8 +15,6 @@ windowsBasePath = "C:\\Users\\JNelsen\\OneDrive - KNEX\\Desktop\\logs"
 
 linuxWorkLogPath = "/work_logs/"
 windowsWorkLogPath = "\\work_logs\\"
-linuxJournalPath = "/journal/"
-windowsJournalLogPath = "\\journal\\"
 
 newLine = "\n"
 twoNewLines = "\n\n"
@@ -28,12 +27,8 @@ def writeFile(logTypePath, fileName, contents):
     # Make final path
     finalPath = linuxBasePath + logTypePath
     if(platform.system() == 'Windows'):
-        finalPath = windowsBasePath
-        # Append log type path based on os
-        if logTypePath == '/work_logs/':
-            finalPath = finalPath + windowsWorkLogPath
-        else:
-            finalPath = finalPath + windowsJournalLogPath
+        finalPath = windowsBasePath + windowsWorkLogPath
+            
 
     # Check if path exists
     if not os.path.exists(finalPath):
@@ -116,48 +111,5 @@ def logWorkEntry():
     # Confirm
     print(newLine + "Work successfully logged!")
 
-def logJournalEntry():
-
-    # Form the title for the journal entry
-    date = datetime.datetime.now()
-    # Weekday - Month - Day of Month - Year
-    journalEntryTitle = date.strftime("%a %b %d, %Y")
-
-    # Start the outstring
-    outString ="Journal Entry" + newLine
-
-    # Start the entry
-    print(newLine + mediumDivider)
-    print(journalEntryTitle + " Journal Entry")
-    print(mediumDivider)
-
-    # Record the date and time
-    outString = outString + smallDivider + newLine
-    dateAndTime = date.strftime("%a %b %d, %Y - %I:%M %p") + " Journal Entry"
-    outString = outString + dateAndTime
-    outString = outString + newLine + mediumDivider + newLine
-
-    # Journal Entry
-    entry = input("\nEnter your journal entry:\n\n")
-    entry = makeParagraph(entry)
-    outString = outString + newLine + "Journal Entry" + newLine + smallDivider + twoNewLines
-    outString = outString + str("   " + entry) + twoNewLines
-
-    # Write the file
-    writeFile(linuxJournalPath, dateAndTime, outString)
-
-    # Confirm
-    print(newLine + "Journal Entry successfully logged!")
-
 # Main function call
-options = "1 = Log your work\n2 = Write a journal entry"
-selection = input("\nWhat would you like to do?\n" + options + "\n")
-selection = str(selection)
-
-# Select the option
-if selection == "1":
-    logWorkEntry()
-elif selection == "2":
-    logJournalEntry()
-else:
-    print("Quitting...")
+logWorkEntry()
