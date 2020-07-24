@@ -20,8 +20,10 @@ I've boiled these particular questions as ones that are effective in giving a wh
 
 1. There are two important parameters in the source code to change to set up loci on your machine (both Windows and Linux are supported):
 	1. The base path - The path where the work logs foldeer will reside
-	2. The log path name - What you want your work log folder to be named (leaving this as default is fine)
-These parameters reside at the top of the file and can be set for both Windows and Linux
+	
+2. The log path name - What you want your work log folder to be named (leaving this as default is fine).
+	
+	  These parameters reside at the top of the file and can be set for both Windows and Linux
 2. Ensure that you have python installed on your machine
 
 ## Run Loci
