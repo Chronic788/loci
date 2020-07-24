@@ -11,7 +11,7 @@ import os
 import platform
 
 linuxBasePath = "/home/jared/Desktop/logs"
-windowsBasePath = "C:\\Users\\JNelsen\\OneDrive - KNEX\\Desktop\\logs"
+windowsBasePath = "C:\\Common\\"
 
 linuxWorkLogPath = "/work_logs/"
 windowsWorkLogPath = "\\work_logs\\"
