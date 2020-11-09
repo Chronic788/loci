@@ -22,21 +22,30 @@ smallDivider = "----------------"
 mediumDivider = "------------------------------"
 largeDivider = "---------------------------------------------"
 
-def writeFile(logTypePath, fileName, contents):
-
-    # Make final path
+# Makes the final path for the file
+def makeFinalPath(logTypePath):
     finalPath = linuxBasePath + logTypePath
     if(platform.system() == 'Windows'):
         finalPath = windowsBasePath + windowsWorkLogPath
-            
+    return finalPath
 
+# Makes the final file name
+def makeFinalFileName(finalPath, fileName):
+    fileName = fileName.replace(":", ".")
+    return finalPath + fileName + ".txt"
+
+# Writes the log file
+def writeFile(logTypePath, fileName, contents):
+
+    # Make final path
+    finalPath = makeFinalPath(logTypePath)
+            
     # Check if path exists
     if not os.path.exists(finalPath):
         os.makedirs(finalPath)
 
     # Write contents of file
-    fileName = fileName.replace(":", ".")
-    filePath = finalPath + fileName + ".txt"
+    filePath = makeFinalFileName(finalPath, fileName)
     entryFile = open(filePath, "w")
     entryFile.write(contents)
     entryFile.close()
@@ -108,8 +117,11 @@ def logWorkEntry():
     # Write the file
     writeFile(linuxWorkLogPath, dateAndTime, outString)
 
+    # Make the final file name
+    finalFileName = makeFinalFileName(makeFinalPath(linuxWorkLogPath), dateAndTime)
+
     # Confirm
-    print(newLine + "Work successfully logged!")
+    print(newLine + "Work successfully logged at " + finalFileName + "!")
 
 # Main function call
 logWorkEntry()
