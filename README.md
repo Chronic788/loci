@@ -14,7 +14,7 @@ It does so by asking 5 key questions:
 4. What was your productivity level (from 1 to 10) and why?
 5. What are you doing tomorrow?
 
-I've boiled these particular questions as ones that are effective in giving a whole perspective of a day. Questions can easily be added and removed in the source code if you don't like one or have one that matters to you.
+I've boiled these particular questions as ones that are effective in giving a whole perspective of a day.
 
 ## What does Loci do?
 
