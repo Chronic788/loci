@@ -40,6 +40,10 @@ Loci is a script that runs from the command line. When you run it it will ask yo
 1. Change directories to where the loci.py file is
 2. Run this command: python loci.py
 
+## Customize Loci
+
+Do you want to include a question that is important to you or remove one you don't like? If so, it's very straightforward to add a section to the logWorkEntry() function!
+
 ## What Happens?
 
 Loci will take the answers to your questions and compile a little report in a text file at the location you specify. The file will be titled with the day and time for easy reference.
