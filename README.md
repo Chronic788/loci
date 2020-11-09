@@ -44,8 +44,8 @@ Loci is a script that runs from the command line. When you run it it will ask yo
 
 Do you want to include a question that is important to you or remove one you don't like? If so, it's very straightforward to add a section to the logWorkEntry() function!
 
-## What Happens?
+## When should I run Loci?
 
-Loci will take the answers to your questions and compile a little report in a text file at the location you specify. The file will be titled with the day and time for easy reference.
+I find it best to run Loci right at the end of the workday to capture as much of it as you can. Then the next morning you can look back at it to refresh yourself of what is going on.
 
 Try it out for a few days and see if it helps you keep track of your work!
