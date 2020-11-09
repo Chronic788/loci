@@ -16,7 +16,7 @@ It does so by asking 5 key questions:
 
 I've boiled these particular questions as ones that are effective in giving a whole perspective of a day. Questions can easily be added and removed in the source code if you don't like one or have one that matters to you.
 
-## What does loci do?
+## What does Loci do?
 
 Loci is a script that runs from the command line. When you run it it will ask you the 5 questions above and then output a report to a file titled with the date and time that you can look at later.
 
