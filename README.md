@@ -9,7 +9,7 @@ I find one of the hardest things about being a professional software engineer is
 It does so by asking 5 key questions:
 
 1. What were some of your accomplishments today?
-2. What were some of your difficulties today?
+2. What were some of the difficulties you faced today?
 3. What are some specifics from today that you would like to remember?
 4. What was your productivity level (from 1 to 10) and why?
 5. What are you doing tomorrow?
