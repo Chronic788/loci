@@ -11,7 +11,7 @@ import os
 import platform
 
 linuxBasePath = "/home/jared/Desktop/logs"
-windowsBasePath = "C:\\Common\\"
+windowsBasePath = "C:\\"
 
 linuxWorkLogPath = "/work_logs/"
 windowsWorkLogPath = "\\work_logs\\"
@@ -90,13 +90,13 @@ def logWorkEntry():
     outString = outString + str("   " + difficulties) + twoNewLines
 
     # Notes
-    notes = input("\nEnter some notes about work today:\n\n")
+    notes = input("\nWhat are some specifics from today that you would like to remember?\n\n")
     notes = makeParagraph(notes)
     outString = outString + newLine + "Notes" + newLine + smallDivider + twoNewLines
     outString = outString + str("   " + notes) + twoNewLines
 
     # Productivity score
-    productivity = input("\nWhat was your productivity level (from 1 to 10)?\n\n")
+    productivity = input("\nWhat was your productivity level (from 1 to 10) and why?\n\n")
     outString = outString + newLine + "Productivity Score" + newLine + smallDivider + twoNewLines
     outString = outString + str("   " + productivity) + twoNewLines
 
